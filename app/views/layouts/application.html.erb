@@ -42,9 +42,9 @@
             </li>
             
             <% else %>
-            <li class="nav-item">
+            <a class="nav-item">
               <%= link_to "Home", href= "/", class: 'nav-link text-white' %>
-            </li>
+            </a>
             <li class="nav-item">
               <%= link_to "About", about_path, class: 'nav-link text-white' %>
             </li>
@@ -64,7 +64,7 @@
     <%= yield %>
     </main>
     <footer>
-      <p class="text-center">CopyRight Infratop.inc</p>
+      <p class="text-center mt-5">CopyRight Infratop.inc</p>
     </footer>
   </body>
 </html>
