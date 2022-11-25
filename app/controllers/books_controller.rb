@@ -1,11 +1,10 @@
 class BooksController < ApplicationController
-  def new
-    
-  end
-
+  
   def index
-    #@book = Book.new
-    #@books = Book.all
+    @book = Book.new
+    @books = Book.all
+    #@user = User.find(params[:id])
+    #@books = @user.books
   end
 
   def show
@@ -15,4 +14,11 @@ class BooksController < ApplicationController
 
   def destroy
   end
+  
+  private
+  # ストロングパラメータ
+  def book_params
+    params.require(:book).permit(:title, :body)
+  end
+
 end
