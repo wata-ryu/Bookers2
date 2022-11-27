@@ -59,14 +59,15 @@
             <td>
              <% if @book.user == current_user %>
              <button class="btn btn-sm btn-success">
-              <%= link_to "Edit", edit_book_path(current_user.id), class: 'nav-link text-white' %>
+                                               <!--↓エディット画面に、作成した本のidを持っていく-->
+              <%= link_to "Edit", edit_book_path(@book.id), class: 'nav-link text-white' %>
              </button>
              <% end %>
             </td>
             <td>
               <% if @book.user == current_user %>
               <button class="btn btn-sm btn-danger">
-                <%= link_to "Destroy", books_path(@book), method: :delete %>
+                <%= link_to "Destroy", book_path(@book.id), method: :delete %>
               </button>
               <% end %>
             </td>
