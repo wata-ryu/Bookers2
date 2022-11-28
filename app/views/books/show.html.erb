@@ -26,7 +26,7 @@
         <% end %>
       </div>
       
-      <!-- ユーザーの投稿一覧 -->
+      <!--投稿機能 -->
       <h2 class="mt-3">New book</h2>
       <div>
         <%= form_with model: @new_book do |f| %>
@@ -44,7 +44,8 @@
         <% end %>
       </div>
     </div>
- 
+    
+    <!--作成したもの単体の詳細画面-->
     <div class="col-md-8 offset-md-1 mt-3">
      <h2>Book detail</h2>
      
@@ -67,7 +68,7 @@
             <td>
               <% if @book.user == current_user %>
               <button class="btn btn-sm btn-danger">
-                <%= link_to "Destroy", book_path(@book.id), method: :delete %>
+                <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？" %>
               </button>
               <% end %>
             </td>

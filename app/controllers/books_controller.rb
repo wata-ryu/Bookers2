@@ -1,11 +1,11 @@
 class BooksController < ApplicationController
   
   def index
+    #usersのshowと一部同じ定義を使っている
+    @book = Book.new
     @books = Book.all
-    @book = Book.find(params[:id])
-    @user = User.find(@book.user.id)
-    #@user = User.find(params[:id])
-    #@books = @user.books
+    @user = User.find(current_user.id)
+    @users = User.all
   end
   
   def edit
@@ -36,13 +36,13 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = Book.find(params[:id])
+    @book = Book.find(params[:id])#データ（レコード）を1件取得
     @book.destroy
-    redirect_to '/books'
+    redirect_to books_path(@book.user)
   end
   
   private
-  # ストロングパラメータ
+  #ストロングパラメータ
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
