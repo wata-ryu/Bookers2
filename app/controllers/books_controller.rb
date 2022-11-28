@@ -27,9 +27,9 @@ class BooksController < ApplicationController
    #logger.debug(@book.inspect)
   end
   
-  def create
-    #左下の投稿機能
+  def create#左下の投稿機能
     @book = Book.new(book_params)
+    #現在のuserのidと一致する場合保存
     @book.user_id = current_user.id
     @book.save
     redirect_to book_path(@book)
@@ -38,7 +38,7 @@ class BooksController < ApplicationController
   def destroy
     @book = Book.find(params[:id])#データ（レコード）を1件取得
     @book.destroy
-    redirect_to books_path(@book.user)
+    redirect_to books_path
   end
   
   private
