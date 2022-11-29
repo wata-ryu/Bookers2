@@ -1,3 +1,18 @@
+<!--コントーラで定義したflash messageを表示-->
+<% flash.each do |key, value| %>
+  <p class="info<%= key %>">
+    <%= value %>
+  </p>
+<% end %>
+<!--バリデーションのエラーメッセージ-->
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <!-- ユーザーの詳細 -->
 <div class="container px-5 px-sm-0">
   <div class="row">

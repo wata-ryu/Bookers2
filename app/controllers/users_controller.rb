@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  #Bootstrap の flash messageを使えるようにキーを許可する
+  add_flash_types :success, :info, :warning, :danger
+  
   def show
    @book = Book.new
    #１人の
@@ -12,8 +15,13 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(current_user.id)
+    if @user.update(user_params)
+      #user情報更新成功のflash message
+      flash[:notice] = "You have updated user successfully."
+      redirect_to user_path(current_user.id)
+    else
+      render:edit
+    end
   end
   
   def index

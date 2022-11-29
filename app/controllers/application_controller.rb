@@ -1,10 +1,15 @@
 class ApplicationController < ActionController::Base
+  #Bootstrap の flash messageを使えるようにキーを許可する
+  add_flash_types :success, :info, :warning, :danger
+  #ログイン認証されていなければ、ログイン画面へリダイレクトする
+  before_action :authenticate_user!, except: [:top]
   
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   #サインイン後の移動画面を指定
   def after_sign_in_path_for(resource)
     user_path(id: current_user)
+    
   end
   
   

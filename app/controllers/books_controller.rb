@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  #Bootstrap の flash messageを使えるようにキーを許可する
+  add_flash_types :success, :info, :warning, :danger
   
   def index
     #usersのshowと一部同じ定義を使っている
@@ -14,8 +16,13 @@ class BooksController < ApplicationController
   
   def update
     @book = Book.find(params[:id])
-    @book.update(book_params)
-    redirect_to user_path(current_user.id)
+    if @book.update(book_params)
+      #更新成功のflash message
+      flash[:notice] = "You have updated book successfully."
+      redirect_to user_path(current_user.id)
+    else
+      render:edit
+    end
   end
 
   def show
@@ -31,8 +38,15 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     #現在のuserのidと一致する場合保存
     @book.user_id = current_user.id
-    @book.save
-    redirect_to book_path(@book)
+    if @book.save
+      flash[:notice] = "You have created book successfully."
+      redirect_to book_path(@book)
+    else
+      @user = User.find(@book.user.id)
+      @books = Book.all
+      render:index
+    end
+      
   end
 
   def destroy

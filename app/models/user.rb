@@ -6,7 +6,11 @@ class User < ApplicationRecord
          
   has_many :books, dependent: :destroy
   
+  #アクティブストレージで画像を取得できるようにする
   has_one_attached :profile_image
+  
+  #バリデーション設定、trueと記述するとデータが存在しなければならない
+  validates :name, presence: true
   
   def get_profile_image(width, height)
     unless profile_image.attached?

@@ -7,5 +7,7 @@ class Book < ApplicationRecord
      
      #userが１に対してbookがNである記述
      belongs_to :user
-     
+     #バリデーション設定、trueと記述するとデータが存在しなければならない
+     validates :title, presence: true
+     validates :body, presence: true
 end
