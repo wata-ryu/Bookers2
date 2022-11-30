@@ -9,5 +9,6 @@ class Book < ApplicationRecord
      belongs_to :user
      #バリデーション設定、trueと記述するとデータが存在しなければならない
      validates :title, presence: true
+     #空、かつ200文字いじょうでエラー
      validates :body, presence: true, length: { maximum: 200 }
 end

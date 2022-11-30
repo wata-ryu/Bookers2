@@ -4,13 +4,19 @@ class UsersController < ApplicationController
   
   def show
    @book = Book.new
-   #１人の
    @user = User.find(params[:id])
    @books = @user.books
   end
 
   def edit
-   @user = User.find(params[:id])
+     @user = User.find(params[:id])
+     #自分のプロフ編集以外をしようとした場合、自分の詳細ページに移行
+     if @user == current_user
+       render:edit
+     else
+       redirect_to user_path(current_user.id)
+     end
+       
   end
   
   def update
