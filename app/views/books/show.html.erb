@@ -54,25 +54,30 @@
       <table class="table">
        <tbody>
           <tr>
-            <td><%= image_tag @user.get_profile_image(100,100) %><br>
-            <!--取得したnameをリンクにしてuser詳細画面へ移行-->
-              <%= link_to @user.name, user_path(@user.id) %>
+            <td><!--取得したプロフ画像とnameをリンクにしてuser詳細画面へ移行-->
+              <%= link_to user_path(@user.id) do %>
+                  <%= image_tag @user.get_profile_image(100,100) %><br>
+                  <%= @user.name %>
+              <% end %>
             </td>
             <td><%= link_to @book.title, book_path(@book) %></td>
             <td><%= @book.body %></td>
             <td>
              <% if @book.user == current_user %>
-             <button class="btn btn-sm btn-success">
-                                               <!--↓エディット画面に、作成した本のidを持っていく-->
-              <%= link_to "Edit", edit_book_path(@book.id), class: 'nav-link text-white' %>
-             </button>
-             <% end %>
+               <button class="btn btn-sm btn-success">
+                                                 <!--↓エディット画面に、作成した本のidを持っていく-->
+                <%= link_to "Edit", edit_book_path(@book.id), class: 'nav-link text-white' %>
+               </button>
+               <% end %>
             </td>
             <td>
               <% if @book.user == current_user %>
-              <button class="btn btn-sm btn-danger">
-                <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-              </button>
+                <button class="btn btn-sm btn-danger">
+                  <!--削除機能ボタン-->
+                  <%= link_to(book_path(@book), method: :delete, class: 'nav-link text-white', "data-confirm" => "本当に削除しますか？") do %>
+                    <span>Destroy</span>
+                  <% end %>
+                </button>
               <% end %>
             </td>
           </tr>

@@ -6,8 +6,8 @@ class BooksController < ApplicationController
     #usersのshowと一部同じ定義を使っている
     @book = Book.new
     @books = Book.all
-    @user = User.find(current_user.id)
     @users = User.all
+    @user = User.find(current_user.id)
   end
   
   def edit
@@ -17,6 +17,7 @@ class BooksController < ApplicationController
      else
        redirect_to books_path
      end
+     
   end
   
   def update
