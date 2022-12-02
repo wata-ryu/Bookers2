@@ -11,7 +11,7 @@ class User < ApplicationRecord
   
   #バリデーション設定、trueと記述するとデータが存在しなければならない
   validates :name, presence: true, length: { in: 2..50 }
-  validates :introduction, length: { in: 0..50 }
+  validates :introduction, length: { maximum: 10 }
   
   def get_profile_image(width, height)
     unless profile_image.attached?
