@@ -7,10 +7,14 @@ class BooksController < ApplicationController
     @book = Book.new
     @books = Book.all
     @users = User.all
+    #@book = Book.find(params[:id])
+    #@user = User.find(params[:id])
     @user = User.find(current_user.id)
   end
   
   def edit
+    #paramsとはRailsで送られてきた値を受け取るためのメソッド
+    #送られてくる情報(リクエストパラメータ)は主に、getのクエリパラメータとPostでformを使って送信されるデータの2つ
      @book = Book.find(params[:id])
      if @book.user == current_user
        render:edit
