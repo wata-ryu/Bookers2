@@ -5,22 +5,19 @@
 <% end %>
 
 <div class="mx-auto">
-  <h1 class="mt-3">welcome to <span class="fa-solid fa-book"></span>Bookers !!</h1>
+  <h1 class="mt-3">welcome to <span class="fas fa-book"></span>Bookers !!</h1>
   
-  <p>In <span class="fa-solid fa-book"></span>Bookers,</p>
+  <p>In <span class="fas fa-book"></span>Bookers,</p>
   <p class="mt-3">you can share and exchange your opinions , inpressions , and emotions</p>
   <p class="mt-3">about various books!</p>
   
   <div class="d-flex flex-column bd-highlight mb-3">
     <div class="p-2 bd-highlight">
-      <button type="button" class="btn btn-info" style="width:450px">
-        <%= link_to "Log in", new_user_session_path, class: 'nav-link text-white' %>
-      </button>
-  　</div>
+      <!--aタグとlink_toは複合しない-->
+        <%= link_to "Log in", new_user_session_path, class: 'btn btn-info btn-sm btn-block mb-3 nav-link text-white' %>
+    </div>
     <div class="p-2 bd-highlight">
-      <button type="button" class="btn btn-success" style="width:450px">
-        <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-white' %>
-      </button>
-  　</div>
+        <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-success btn-sm btn-block nav-link text-white' %>
+    </div>
   </div>
 </div>

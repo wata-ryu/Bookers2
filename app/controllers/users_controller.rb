@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def index
     @books = Book.all
     @users = User.all
-    
+    @book = Book.new
   end
   
   private

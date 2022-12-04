@@ -44,10 +44,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :test
 
   # Print deprecation notices to the stderr.
-  config.active_support.deprecation = :stderr
+  config.active_support.deprecation = :silence
 
   # Raise exceptions for disallowed deprecations.
-  config.active_support.disallowed_deprecation = :silence
+  config.active_support.disallowed_deprecation = :raise
 
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []

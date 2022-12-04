@@ -4,20 +4,21 @@
     <%= value %>
   </p>
 <% end %>
-<!--バリデーションのエラーメッセージ-->
-<% if @book.errors.any? %>
-  <%= @book.errors.count %>errors prohibited this obj from being saved:
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+
 <!-- ユーザーの詳細 -->
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
       <h2 class="mt-3">User info</h2>
+      <!--バリデーションのエラーメッセージ-->
+      <% if @book.errors.any? %>
+        <%= @book.errors.count %>errors prohibited this obj from being saved:
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
       <div>
         <%= image_tag @user.get_profile_image(100,100) %>
           <table class="table">
@@ -33,7 +34,7 @@
             </tbody>
           </table>
           <%= link_to edit_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-           <i class="fa-solid fa-user-pen"></i>
+           <i class="fas fa-user-cog"></i>
           <% end %>
       </div>
       <!-- 新規投稿機能-->
@@ -47,8 +48,7 @@
           <%= f.text_area :body, class: 'form-control' %>
           
         	<div class="mt-3">
-        	  <!--nilにすることで中のテキストをそのままにbootstrapのbutton機能を使える-->
-            <%= f.submit 'Create books', class: 'btn btn-success' %>
+            <%= f.submit 'Create Book', class: 'btn btn-success' %>
           </div>
         <% end %>
       </div>
@@ -69,8 +69,11 @@
           <!--ブロック変数はコントローラではなくここのみで定義しているので＠はつかない-->
           <% @books.each do |book| %>
           <tr>
-            <td><%= image_tag book.user.get_profile_image(100,100) %></td>
-            
+            <td>
+              <%= link_to user_path(@user.id) do %>
+                  <%= image_tag book.user.get_profile_image(100,100) %>
+              <% end %>
+            </td>
             <td><%= link_to book.title, book_path(book) %></td>
             <td><%= book.body %></td>
           </tr>

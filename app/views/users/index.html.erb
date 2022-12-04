@@ -5,7 +5,6 @@
       <h2 class="mt-3">User info</h2>
       <div>
         <%= image_tag current_user.get_profile_image(100,100) %>
-         
             <table class="table">
               <tbody>
                 <tr>
@@ -19,23 +18,24 @@
               </tbody>
             </table>
             <%= link_to edit_user_path(current_user), class: 'btn btn-outline-secondary btn-block' do %>
-               <i class="fa-solid fa-user-pen"></i>
+               <i class="fas fa-user-cog"></i>
             <% end %>
-          
       </div>
       
       <!-- 新規投稿機能-->
       <h2 class="mt-3">New book</h2>
       <div>
         <%= form_with model: @book do |f| %>
-          <h6>Title</h6>
-          <%= f.text_field :title, class: 'form-control' %>
-        	
-          <h6 class="mt-3">Opinion</h6>
-          <%= f.text_area :body, class: 'form-control' %>
+          <div class="form-group">
+            <h6>Title</h6>
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <h6 class="mt-3">Opinion</h6>
+            <%= f.text_area :body, class: 'form-control' %>
+          </div>
         	<div class="mt-3">
-          <!--nilにすることで中のテキストをそのままにbootstrapのbutton機能を使える-->
-            <%= f.submit 'Create books', class: 'btn btn-success' %>
+            <%= f.submit 'Create Book', class: 'btn btn-success' %>
           </div>
         <% end %>
       </div>
@@ -58,7 +58,7 @@
           <tr>
             <td><%= image_tag user.get_profile_image(100,100) %></td>
             <td><%= user.name %></td><!--@つけない↓-->
-            <td><%= link_to 'show', user_path(user.id) %></td>
+            <td><%= link_to 'Show', user_path(user.id) %></td>
           </tr>
           <% end %>
         </tbody>

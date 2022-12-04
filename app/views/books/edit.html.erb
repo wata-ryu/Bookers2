@@ -15,7 +15,7 @@
               <div class="form-group">
                 <p>Title</p>
                 <div class="field">
-                  <%= f.text_field :title, autofocus: true, id:"inputTitle" %>
+                  <%= f.text_field :title, autofocus: true, id:"inputTitle", class: 'form-control' %>
                 </div>
               </div>
               
@@ -23,11 +23,11 @@
                 <p>Opinion</p>
                 
                 <div class="field">
-                  <%= f.text_area:body, autofocus: true, id:"inputBody" %>
+                  <%= f.text_area:body, autofocus: true, id:"inputBody", class: 'form-control' %>
                 </div>
               </div>
               <div>
-                  <%= f.submit 'Update Book' %>
+                  <%= f.submit 'Update Book', class: 'btn btn-success' %>
               </div>
               
               <div class="field mt-3">

@@ -17,9 +17,9 @@ class BooksController < ApplicationController
     #送られてくる情報(リクエストパラメータ)は主に、getのクエリパラメータとPostでformを使って送信されるデータの2つ
      @book = Book.find(params[:id])
      if @book.user == current_user
-       render:edit
+        render:edit
      else
-       redirect_to books_path
+        redirect_to books_path
      end
      
   end
@@ -29,7 +29,7 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       #更新成功のflash message
       flash[:notice] = "You have updated book successfully."
-      redirect_to user_path(current_user.id)
+      redirect_to book_path(@book)
     else
       render:edit
     end
